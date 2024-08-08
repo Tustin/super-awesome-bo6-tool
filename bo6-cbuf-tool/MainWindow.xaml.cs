@@ -109,7 +109,22 @@ namespace bo6_cbuf_tool
             ps4.WriteInt32(gameProcess.pid, cmd_textArray + 0x10004, ps4.ReadInt32(gameProcess.pid, cmd_textArray + 0x10004) + length);
 
             ps4.Notify(222, text + " executed");
+        }
 
+        private void btnStartLobby_Click(object sender, RoutedEventArgs e)
+        {
+            CBuf_AddText("xstartlobby");
+        }
+
+        private void btnSetMap_Click(object sender, RoutedEventArgs e)
+        {
+            var map = cbMap.Text;
+            CBuf_AddText("#x3ef237da69bb64ef6 " + map);
+        }
+
+        private void btnGoPartyGo_Click(object sender, RoutedEventArgs e)
+        {
+            CBuf_AddText("xstartlobby;xpartygo");
         }
     }
 }
