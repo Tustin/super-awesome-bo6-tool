@@ -3,9 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:bo6_cbuf_tool.ViewModels"
         xmlns:local="clr-namespace:bo6_cbuf_tool"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
+    <Window.Resources>
+        <local:DvarList x:Key="Dvars" />
+    </Window.Resources>
+
     <Grid Width="800" Height="450">
         <TextBox x:Name="txtIp" Text="192.168.0.110" Margin="10,10,672,417"/>
 
@@ -13,6 +19,19 @@
         <Button x:Name="btnAttach" Content="Attach" Click="btnAttach_Click" Margin="288,12,400,417"></Button>
         <TextBox x:Name="txtCommand" Margin="39,172,584,245" Text="xstartlobby"></TextBox>
         <Button x:Name="btnSend" Content="Send Command" Click="btnSend_Click" Margin="221,172,467,245"></Button>
+        <Label Content="Dvar" Margin="399,82,327,341"></Label>
+        <ComboBox x:Name="cbDvar" Margin="399,109,81,309" ItemsSource="{StaticResource Dvars}" SelectedValue="{Binding SelectedDvar}" SelectedValuePath="Value" DisplayMemberPath="Key">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <Label Content="Value" Margin="400,154,354,269" RenderTransformOrigin="0.486,0.439"></Label>
+        <TextBox x:Name="txtDvarValue" Margin="400,181,81,237" Text="{Binding SelectedDvarValue}"></TextBox>
+        <Button x:Name="btnCallDvar" Content="Invoke Dvar" Click="btnCallDvar_Click" Margin="503,225,185,192"></Button>
+
+        <Button x:Name="btnFullBright" Content="Fullbright" Click="btnFullBright_Click" Margin="631,356,57,61"></Button>
 
         <Button x:Name="btnStartLobby" Content="Start Lobby" Click="btnStartLobby_Click" Margin="54,281,634,136"></Button>
         <Button x:Name="btnGoPartyGo" Content="Go Party GO!" Click="btnGoPartyGo_Click"  Margin="196,281,492,136"></Button>

@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LibDebug;
+using System.Linq;
+using bo6_cbuf_tool.ViewModels;
 
 namespace bo6_cbuf_tool
 {
@@ -25,9 +27,18 @@ namespace bo6_cbuf_tool
 
         public static Process? gameProcess;
 
+        public bool fullBright = true;
+
+        public KeyValuePair<string, string>? dvarList = new();
+
+        private MainWindowViewModel _mainWindowViewModel = new MainWindowViewModel();
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = _mainWindowViewModel;
         }
 
         private void btnConnect_Click(object sender, RoutedEventArgs e)
@@ -111,6 +122,19 @@ namespace bo6_cbuf_tool
             ps4.Notify(222, text + " executed");
         }
 
+
+        void CallDvar(string dvarHash, object? value = null)
+        {
+            if (value == null)
+            {
+                CBuf_AddText("#x3" + dvarHash);
+            }
+            else
+            {
+                CBuf_AddText("#x3" + dvarHash + " " + value);
+            }
+        }
+
         private void btnStartLobby_Click(object sender, RoutedEventArgs e)
         {
             CBuf_AddText("xstartlobby");
@@ -126,5 +150,35 @@ namespace bo6_cbuf_tool
         {
             CBuf_AddText("xstartlobby;xpartygo");
         }
+
+        private void btnCallDvar_Click(object sender, RoutedEventArgs e)
+        {
+            CallDvar(_mainWindowViewModel.SelectedDvar, _mainWindowViewModel.SelectedDvarValue);
+        }
+
+        private void btnFullBright_Click(object sender, RoutedEventArgs e)
+        {
+            fullBright = !fullBright;
+
+            var fullBrightText = fullBright ? "1" : "0";
+
+            CallDvar("704554F429DAB488", fullBrightText);
+            CallDvar("53D347C4D236E028", fullBrightText);
+            CallDvar("AD42CA33A427DE58", fullBrightText);
+            CallDvar("8667C0BB90C5BFC3", fullBrightText);
+            CallDvar("DF200A089A3B3FEB", fullBrightText);
+        }
+
+        //C00E244EA59D530E - third person
+        //4871F220778A4649 - allow spectate
+        // D58083F509013576 - fx
+
+        //704554F429DAB488 => "sm_sunAllow",
+        //53D347C4D236E028 => "sm_spotAllow",
+        //AD42CA33A427DE58 => "sm_spotEnable",
+        //8667C0BB90C5BFC3 => "sm_spotDistCull",
+        //DF200A089A3B3FEB => "r_fog",
+
+
     }
 }
