@@ -40,7 +40,7 @@
         <ComboBox x:Name="cbGameMode" ItemsSource="{Binding GameModes}" SelectedValue="{Binding GameMode}" Margin="615,242,29,181"></ComboBox>
         <Button x:Name="btnSetGameMode" Content="Set Game Mode" Click="btnSetGameMode_Click" Margin="637,284,51,138"/>
         <Label Content="PS4 IP" Margin="16,3,710,420"/>
-        <Button x:Name="btnUnlockAll" Content="Unlock All" Click="btnUnlockAll_Click" Margin="196,342,492,75"/>
+        <Button x:Name="btnUnlockAll" Visibility="Hidden" Content="Unlock All" Click="btnUnlockAll_Click" Margin="196,342,492,75"/>
 
     </Grid>
 </Window>
