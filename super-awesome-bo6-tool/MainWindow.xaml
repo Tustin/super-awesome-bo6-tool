@@ -1,0 +1,46 @@
+﻿<Window x:Class="bo6_cbuf_tool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:bo6_cbuf_tool.ViewModels"
+        xmlns:local="clr-namespace:bo6_cbuf_tool"
+        mc:Ignorable="d"
+        Title="Super Awesome BO6 Tool" Height="450" Width="800">
+
+    <Window.Resources>
+        <local:DvarList x:Key="Dvars" />
+    </Window.Resources>
+
+    <Grid Width="800" Height="450">
+        <TextBox Text="{Binding ConsoleIpAddress}" Margin="16,30,575,397"/>
+
+        <Button x:Name="btnConnect" Content="Inject Payload" Margin="16,58,684,368" RenderTransformOrigin="0.5,0.5" Click="btnConnect_Click"></Button>
+        <Button x:Name="btnAttach" Content="Attach to EBOOT" Click="btnAttach_Click" Margin="121,60,575,368"></Button>
+        <TextBox x:Name="txtCommand" Margin="16,172,584,245" Text="{Binding CommandBuffer}"></TextBox>
+        <Button x:Name="btnSend" Content="Send Command" Click="btnSend_Click" Margin="221,172,467,245"></Button>
+        <Label Content="Dvar" Margin="466,8,260,415"></Label>
+        <ComboBox x:Name="cbDvar" Margin="466,35,51,383" ItemsSource="{StaticResource Dvars}" SelectedValue="{Binding SelectedDvar}" SelectedValuePath="Value" DisplayMemberPath="Key">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <Label Content="Value" Margin="467,80,287,343" RenderTransformOrigin="0.486,0.439"></Label>
+        <TextBox x:Name="txtDvarValue" Margin="467,107,51,311" Text="{Binding SelectedDvarValue}"></TextBox>
+        <Button x:Name="btnCallDvar" Content="Invoke Dvar" Click="btnCallDvar_Click" Margin="570,151,118,266"></Button>
+
+        <Button x:Name="btnFullBright" Content="Fullbright" Click="btnFullBright_Click" Margin="16,342,672,75"></Button>
+
+        <Button x:Name="btnStartLobby" Content="Start Lobby" Click="btnStartLobby_Click" Margin="16,284,672,138"></Button>
+        <Button x:Name="btnGoPartyGo" Content="Go Party GO!" Click="btnGoPartyGo_Click"  Margin="196,284,492,138"></Button>
+        <Button x:Name="btnSetMap" Content="Set Map" Click="btnSetMap_Click" Margin="464,284,224,138" RenderTransformOrigin="1.236,0.997"></Button>
+        <ComboBox x:Name="cbMap" Margin="442,242,202,181" ItemsSource="{Binding Maps}" SelectedValue="{Binding SelectedMap}"></ComboBox>
+        <ComboBox x:Name="cbGameMode" ItemsSource="{Binding GameModes}" SelectedValue="{Binding GameMode}" Margin="615,242,29,181"></ComboBox>
+        <Button x:Name="btnSetGameMode" Content="Set Game Mode" Click="btnSetGameMode_Click" Margin="637,284,51,138"/>
+        <Label Content="PS4 IP" Margin="16,3,710,420"/>
+        <Button x:Name="btnUnlockAll" Content="Unlock All" Click="btnUnlockAll_Click" Margin="196,342,492,75"/>
+
+    </Grid>
+</Window>
