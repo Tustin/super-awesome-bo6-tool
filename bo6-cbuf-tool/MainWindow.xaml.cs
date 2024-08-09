@@ -101,23 +101,28 @@ namespace bo6_cbuf_tool
 
         void CBuf_AddText(string text)
         {
+            if (text[text.Length - 1] != ';')
+            {
+                text += ";";
+            }
+
             var length = text.Length;
 
             UIntPtr cmd_textArray = new UIntPtr(0x400000 + 0x4D6C350);
 
-            int commandSize = ps4.ReadInt32(gameProcess.pid, cmd_textArray + 0x10004);
+           // int commandSize = ps4.ReadInt32(gameProcess.pid, cmd_textArray + 0x10004);
 
             int bufferSize = ps4.ReadInt32(gameProcess.pid, cmd_textArray + 0x10000);
 
-            if (length + commandSize > bufferSize)
+            if (length > bufferSize)
             {
                 MessageBox.Show("Overflow");
                 return;
             }
 
-            ps4.WriteString(gameProcess.pid, cmd_textArray + (ulong)commandSize, text);
+            ps4.WriteString(gameProcess.pid, cmd_textArray, text);
 
-            ps4.WriteInt32(gameProcess.pid, cmd_textArray + 0x10004, ps4.ReadInt32(gameProcess.pid, cmd_textArray + 0x10004) + length);
+            ps4.WriteInt32(gameProcess.pid, cmd_textArray + 0x10004, length);
 
             ps4.Notify(222, text + " executed");
         }
@@ -167,6 +172,11 @@ namespace bo6_cbuf_tool
             CallDvar("AD42CA33A427DE58", fullBrightText);
             CallDvar("8667C0BB90C5BFC3", fullBrightText);
             CallDvar("DF200A089A3B3FEB", fullBrightText);
+        }
+
+        private void btnSetGameMode_Click(object sender, RoutedEventArgs e)
+        {
+            CallDvar("AFF7F040FA04B28E " + _mainWindowViewModel.GameMode  + ";xstartlobby;");
         }
 
         //C00E244EA59D530E - third person

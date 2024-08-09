@@ -14,8 +14,17 @@ namespace bo6_cbuf_tool.ViewModels
 
         public string? SelectedDvarValue { get; set; }
 
+        public string? GameMode { get; set; }
+
+        public List<string> GameModes { get; set; } = new();
+
         public MainWindowViewModel()
         {
+            GameModes.Add("war");
+            GameModes.Add("koth");
+            GameModes.Add("arena");
+            GameModes.Add("dom");
+            GameModes.Add("hvt");
         }
     }
 }
