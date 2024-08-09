@@ -29,8 +29,6 @@ namespace bo6_cbuf_tool
 
         public bool fullBright = true;
 
-        public KeyValuePair<string, string>? dvarList = new();
-
         private MainWindowViewModel _mainWindowViewModel = new MainWindowViewModel();
 
 
@@ -43,14 +41,18 @@ namespace bo6_cbuf_tool
 
         private void btnConnect_Click(object sender, RoutedEventArgs e)
         {
-            var ip = txtIp.Text;
+            if (string.IsNullOrEmpty(_mainWindowViewModel.ConsoleIpAddress))
+            {
+                return;
+            }
+
             try
             {
                 _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 _socket.ReceiveTimeout = 3000;
                 _socket.SendTimeout = 3000;
-                _socket.Connect(new IPEndPoint(IPAddress.Parse(ip), 9090));
+                _socket.Connect(new IPEndPoint(IPAddress.Parse(_mainWindowViewModel.ConsoleIpAddress), 9090));
 
                 _socket.SendFile("ps4debug.bin");
 
@@ -65,11 +67,14 @@ namespace bo6_cbuf_tool
 
         private void btnAttach_Click(object sender, RoutedEventArgs e)
         {
-            var ip = txtIp.Text;
+            if (string.IsNullOrEmpty(_mainWindowViewModel.ConsoleIpAddress))
+            {
+                return;
+            }
 
             try
             {
-                ps4 = new Debugger(IPAddress.Parse(ip));
+                ps4 = new Debugger(_mainWindowViewModel.ConsoleIpAddress);
 
                 ps4.Connect();
 
@@ -94,9 +99,12 @@ namespace bo6_cbuf_tool
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            var command = txtCommand.Text;
+            if (string.IsNullOrEmpty(_mainWindowViewModel.CommandBuffer))
+            {
+                return;
+            }
 
-            CBuf_AddText(command);
+            CBuf_AddText(_mainWindowViewModel.CommandBuffer);
         }
 
         void CBuf_AddText(string text)
@@ -147,8 +155,7 @@ namespace bo6_cbuf_tool
 
         private void btnSetMap_Click(object sender, RoutedEventArgs e)
         {
-            var map = cbMap.Text;
-            CBuf_AddText("#x3ef237da69bb64ef6 " + map);
+            CBuf_AddText("#x3ef237da69bb64ef6 " + _mainWindowViewModel.SelectedMap);
         }
 
         private void btnGoPartyGo_Click(object sender, RoutedEventArgs e)

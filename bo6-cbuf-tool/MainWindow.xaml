@@ -13,11 +13,11 @@
     </Window.Resources>
 
     <Grid Width="800" Height="450">
-        <TextBox x:Name="txtIp" Text="192.168.0.112" Margin="10,10,672,417"/>
+        <TextBox x:Name="txtIp" Text="{Binding ConsoleIpAddress}" Margin="10,10,672,417"/>
 
         <Button x:Name="btnConnect" Content="Connect" Margin="153,10,535,417" RenderTransformOrigin="0.5,0.5" Click="btnConnect_Click"></Button>
         <Button x:Name="btnAttach" Content="Attach" Click="btnAttach_Click" Margin="288,12,400,417"></Button>
-        <TextBox x:Name="txtCommand" Margin="39,172,584,245" Text="xstartlobby"></TextBox>
+        <TextBox x:Name="txtCommand" Margin="39,172,584,245" Text="{Binding CommandBuffer}"></TextBox>
         <Button x:Name="btnSend" Content="Send Command" Click="btnSend_Click" Margin="221,172,467,245"></Button>
         <Label Content="Dvar" Margin="399,82,327,341"></Label>
         <ComboBox x:Name="cbDvar" Margin="399,109,81,309" ItemsSource="{StaticResource Dvars}" SelectedValue="{Binding SelectedDvar}" SelectedValuePath="Value" DisplayMemberPath="Key">
@@ -36,17 +36,7 @@
         <Button x:Name="btnStartLobby" Content="Start Lobby" Click="btnStartLobby_Click" Margin="54,281,634,136"></Button>
         <Button x:Name="btnGoPartyGo" Content="Go Party GO!" Click="btnGoPartyGo_Click"  Margin="196,281,492,136"></Button>
         <Button x:Name="btnSetMap" Content="Set Map" Click="btnSetMap_Click" Margin="366,330,322,87"></Button>
-        <ComboBox x:Name="cbMap" Margin="344,281,300,142">
-            <ComboBoxItem Content="mp_t10_island"></ComboBoxItem>
-            <ComboBoxItem Content="mp_t10_penthouse"></ComboBoxItem>
-            <ComboBoxItem Content="mp_t10_radar"></ComboBoxItem>
-            <ComboBoxItem Content="mp_t10_sm_babylon"></ComboBoxItem>
-            <ComboBoxItem Content="mp_t10_sm_capital"></ComboBoxItem>
-            <ComboBoxItem Content="mp_t10_sm_flat"></ComboBoxItem>
-            <ComboBoxItem Content="mp_t10_sm_vorkuta_mine"></ComboBoxItem>
-            <ComboBoxItem Content="mp_t10_stripmall"></ComboBoxItem>
-            <ComboBoxItem Content="mp_t10_traingraveyard"></ComboBoxItem>
-        </ComboBox>
+        <ComboBox x:Name="cbMap" Margin="344,281,300,142" ItemsSource="{Binding Maps}" SelectedValue="{Binding SelectedMap}"></ComboBox>
         <ComboBox x:Name="cbGameMode" ItemsSource="{Binding GameModes}" SelectedValue="{Binding GameMode}" Margin="560,279,84,144"></ComboBox>
         <Button x:Name="btnSetGameMode" Content="Set Game Mode" Click="btnSetGameMode_Click" Margin="582,330,106,87"/>
 
