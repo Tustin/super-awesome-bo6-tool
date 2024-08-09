@@ -1,5 +1,5 @@
-# bo6-cbuf-tool
+# Super Awesome BO6 Tool!
 
-Invokes CBuf_AddText on Black Ops 6 beta build for PS4.
+Oh yeaahhhh, it's awesome!!!
 
-Yes, I made a real time modding tool in 2024.
+![image](https://github.com/user-attachments/assets/6237b4fa-3b86-46e1-84e4-3e1627a21976)
