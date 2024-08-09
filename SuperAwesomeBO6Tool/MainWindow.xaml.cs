@@ -12,9 +12,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LibDebug;
 using System.Linq;
-using bo6_cbuf_tool.ViewModels;
+using SuperAwesomeBO6Tool.ViewModels;
 
-namespace bo6_cbuf_tool
+namespace SuperAwesomeBO6Tool
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

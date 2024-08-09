@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace bo6_cbuf_tool.ViewModels
+namespace SuperAwesomeBO6Tool.ViewModels
 {
     class MainWindowViewModel
     {

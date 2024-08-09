@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bo6_cbuf_tool
+namespace SuperAwesomeBO6Tool
 {
     class DvarList : Dictionary<string, string>
     {

@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace bo6_cbuf_tool
+namespace SuperAwesomeBO6Tool
 {
     /// <summary>
     /// Interaction logic for App.xaml

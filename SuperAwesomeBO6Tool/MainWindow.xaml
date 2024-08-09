@@ -1,10 +1,10 @@
-﻿<Window x:Class="bo6_cbuf_tool.MainWindow"
+﻿<Window x:Class="SuperAwesomeBO6Tool.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModel="clr-namespace:bo6_cbuf_tool.ViewModels"
-        xmlns:local="clr-namespace:bo6_cbuf_tool"
+        xmlns:viewModel="clr-namespace:SuperAwesomeBO6Tool.ViewModels"
+        xmlns:local="clr-namespace:SuperAwesomeBO6Tool"
         mc:Ignorable="d"
         Title="Super Awesome BO6 Tool" Height="450" Width="800">
 

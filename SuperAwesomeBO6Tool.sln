@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "super-awesome-bo6-tool", "super-awesome-bo6-tool\super-awesome-bo6-tool.csproj", "{5DB15F7C-8B73-4D3C-A0ED-FEDB4EE0F016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperAwesomeBO6Tool", "SuperAwesomeBO6Tool\SuperAwesomeBO6Tool.csproj", "{5DB15F7C-8B73-4D3C-A0ED-FEDB4EE0F016}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibDebug", "LibDebug\LibDebug.csproj", "{5EA21002-C49E-44E6-A97A-217F93CD3291}"
 EndProject
